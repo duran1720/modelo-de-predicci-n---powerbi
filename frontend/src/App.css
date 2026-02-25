@@ -1,0 +1,727 @@
+/* ---------- GLOBAL ---------- */
+
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  width: 100%;
+  max-width: 1200px;
+  padding: 40px;
+  text-align: center;
+}
+
+/* ---------- APP HEADER ---------- */
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(0, 198, 255, 0.1) 0%, rgba(0, 198, 255, 0.05) 100%);
+  border: 2px solid rgba(0, 198, 255, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.header-left h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #00c6ff;
+  text-shadow: 0 0 15px rgba(0, 198, 255, 0.3);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.user-badge {
+  background: linear-gradient(135deg, rgba(0, 198, 255, 0.2) 0%, rgba(0, 198, 255, 0.1) 100%);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(0, 198, 255, 0.3);
+  color: #00c6ff;
+  letter-spacing: 0.5px;
+}
+
+.user-id {
+  font-size: 11px;
+  color: #b0b0b0;
+  letter-spacing: 0.5px;
+}
+
+.logout-btn {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #d32f2f 0%, #c62828 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.3);
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(211, 47, 47, 0.4);
+  background: linear-gradient(135deg, #e53935 0%, #d32f2f 100%);
+}
+
+.logout-btn:active {
+  transform: translateY(0px);
+}
+
+/* ---------- FORM ---------- */
+
+.form {
+  margin: 30px auto;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form select {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+}
+
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #00c6ff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #0072ff;
+}
+
+/* ---------- CARDS ---------- */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.card.moderna {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+  text-align: left;
+  color: #ffffff; /* MÁS CONTRASTE */
+}
+
+/* Glow solo para crítica (NO se cambia) */
+.critical-glow {
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
+  border: 1px solid rgba(255, 0, 0, 0.5);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge {
+  background: crimson;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.porcentaje {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.nivel {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.bloque p {
+  margin: 5px 0;
+  color: #f0f0f0; /* Más visible */
+}
+
+/* ---------- INSIGHT (SIN NEÓN) ---------- */
+
+.insight-box {
+  margin-top: 40px;
+  padding: 25px;
+  border-radius: 12px;
+  background: #1c2b36;
+  color: #ffffff;
+  text-align: left;
+}
+
+/* ---------- DASHBOARD FORMAL ---------- */
+
+.dashboard-analytics {
+  margin-top: 50px;
+  padding: 30px;
+  background: #f4f4f4;
+  border-radius: 12px;
+  color: #000000;
+}
+
+.dashboard-analytics h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.chart-container {
+  width: 100%;
+  height: 400px;
+}
+/* ---------- DASHBOARD MODERNO ---------- */
+
+.dashboard-analytics {
+  margin-top: 60px;
+  padding: 80px;
+  background: #f8f8f8;
+  border-radius: 18px;
+  color: #111;
+}
+
+.dashboard-analytics h2 {
+  margin-bottom: 40px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* KPI */
+
+.kpi-section {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.kpi-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  width: 280px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.kpi-number {
+  font-size: 42px;
+  font-weight: bold;
+  color: #7a1c1c;
+}
+
+.kpi-sub {
+  font-size: 18px;
+  color: #555;
+}
+
+/* CHARTS */
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+}
+
+.chart-box {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.chart-box h4 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+/* SaaS refinement */
+
+.kpi-card {
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  width: 280px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.kpi-card:hover {
+  transform: translateY(-6px);
+}
+
+.kpi-number {
+  font-size: 44px;
+  font-weight: 700;
+}
+
+/* ---------- NAVIGATION TABS ---------- */
+
+.nav-tabs {
+  display: flex;
+  gap: 20px;
+  margin: 30px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 12px 24px;
+  border: 2px solid #00c6ff;
+  background: transparent;
+  color: #00c6ff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.tab-btn:hover {
+  background: rgba(0, 198, 255, 0.1);
+}
+
+.tab-btn.active {
+  background: #00c6ff;
+  color: #0f2027;
+}
+
+/* ---------- STUDENTS COMPARISON ---------- */
+
+.comparison-container {
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.comparison-container h2 {
+  color: #00c6ff;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+.comparison-container p {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.comparison-container button {
+  margin-top: 20px;
+  padding: 10px 20px;
+}
+
+.refresh-btn {
+  background: #00c6ff;
+  color: #0f2027;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.refresh-btn:hover {
+  background: #0072ff;
+  color: white;
+}
+
+/* KPI Row */
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.kpi-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.08) 100%);
+  padding: 25px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(0, 198, 255, 0.3);
+  text-align: center;
+  transition: 0.3s;
+  box-shadow: 0 8px 32px rgba(0, 198, 255, 0.08);
+}
+
+.kpi-card:hover {
+  border: 2px solid rgba(0, 198, 255, 0.6);
+  background: linear-gradient(135deg, rgba(0, 198, 255, 0.15) 0%, rgba(0, 198, 255, 0.08) 100%);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 198, 255, 0.2);
+}
+
+.kpi-card h3 {
+  color: #00c6ff;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(0, 198, 255, 0.2);
+}
+
+.kpi-value {
+  font-size: 32px;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(0, 198, 255, 0.3);
+}
+
+/* Chart Section */
+
+.chart-section {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+  padding: 30px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  margin-bottom: 30px;
+  border: 2px solid rgba(0, 198, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 198, 255, 0.1);
+}
+
+.chart-section h3 {
+  color: #00c6ff;
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-shadow: 0 0 10px rgba(0, 198, 255, 0.3);
+}
+
+/* Tooltip - Mejorado */
+
+.tooltip {
+  background: linear-gradient(135deg, rgba(15, 32, 39, 0.98) 0%, rgba(15, 50, 70, 0.98) 100%);
+  border: 2px solid #00c6ff;
+  padding: 15px;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 13px;
+  box-shadow: 0 8px 24px rgba(0, 198, 255, 0.3);
+  font-weight: bold;
+}
+
+.tooltip p {
+  margin: 6px 0;
+  color: #ffffff;
+  font-size: 13px;
+}
+
+/* Table Section */
+
+.table-section {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.08) 100%);
+  padding: 30px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  margin-bottom: 30px;
+  border: 2px solid rgba(0, 198, 255, 0.3);
+  overflow-x: auto;
+  box-shadow: 0 8px 32px rgba(0, 198, 255, 0.1);
+}
+
+.table-section h3 {
+  color: #00c6ff;
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-shadow: 0 0 10px rgba(0, 198, 255, 0.3);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+}
+
+.students-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(15, 32, 39, 0.4);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 198, 255, 0.2);
+}
+
+.students-table th {
+  background: linear-gradient(90deg, rgba(0, 198, 255, 0.25) 0%, rgba(0, 198, 255, 0.15) 100%);
+  color: #00c6ff;
+  padding: 15px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 2px solid rgba(0, 198, 255, 0.4);
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 6px rgba(0, 198, 255, 0.2);
+}
+
+.students-table td {
+  padding: 14px 15px;
+  border-bottom: 1px solid rgba(0, 198, 255, 0.15);
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.students-table tr:hover {
+  background: rgba(0, 198, 255, 0.12);
+  transition: 0.2s;
+}
+
+.nombre-col {
+  font-weight: bold;
+  color: #00c6ff;
+  text-shadow: 0 0 6px rgba(0, 198, 255, 0.2);
+}
+
+.riesgo-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.user-badge-small {
+  display: inline-block;
+  background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  margin-left: 10px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 198, 255, 0.3);
+}
+
+/* Action Buttons */
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.action-buttons button {
+  padding: 12px 24px;
+  font-size: 14px;
+}
+
+/* ---------- NAVEGACIÓN DE TABS ---------- */
+
+.nav-tabs {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 12px 24px;
+  border: 2px solid #00c6ff;
+  border-radius: 8px;
+  background: transparent;
+  color: #00c6ff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tab-btn.active {
+  background: #00c6ff;
+  color: #0f2027;
+}
+
+.tab-btn:hover {
+  background: #0072ff;
+  border-color: #0072ff;
+  color: white;
+}
+
+/* ---------- COMPARACIÓN DE ESTUDIANTES ---------- */
+
+.comparison-container {
+  padding: 20px;
+}
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.kpi-row .kpi-card {
+  background: rgba(173, 162, 162, 0.1);
+  border: 1px solid rgba(0, 198, 255, 0.3);
+  color: #ffffff;
+}
+
+.kpi-value {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #00c6ff;
+}
+
+.chart-section {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  border-radius: 15px;
+  margin: 30px 0;
+  backdrop-filter: blur(10px);
+  
+}
+
+.chart-section h3 {
+  color: #030303;
+  margin-bottom: 20px;
+}
+
+.tooltip {
+  background: #1c2b36;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #efefef;
+  color: #000000;
+  font-size: 12px;
+}
+
+/* ---------- TABLA DE ESTUDIANTES ---------- */
+
+.table-section {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  border-radius: 15px;
+  margin: 30px 0;
+  backdrop-filter: blur(10px);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.students-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.students-table thead {
+  background: rgba(0, 198, 255, 0.2);
+}
+
+.students-table th {
+  padding: 12px;
+  text-align: left;
+  color: #d7f0f7;
+  font-weight: bold;
+  border-bottom: 2px solid rgba(0, 198, 255, 0.5);
+}
+
+.students-table td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #000000;
+}
+
+.students-table tr:hover {
+  background: rgba(71, 170, 198, 0.1);
+}
+
+.nombre-col {
+  font-weight: bold;
+  color: #00c6ff;
+}
+
+.riesgo-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* ---------- BOTONES DE ACCIÓN ---------- */
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.refresh-btn {
+  padding: 12px 24px;
+  background: #00c6ff;
+  color: #0f2027;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.refresh-btn:hover {
+  background: #0072ff;
+  color: white;
+}
+
+.refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
