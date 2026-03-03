@@ -106,11 +106,7 @@ function Login({ onLogin }) {
           </motion.button>
         </form>
 
-        <div className="login-info">
-          <p>
-            <strong>Nota:</strong> Si es tu primera vez, se creará tu cuenta automáticamente.
-          </p>
-        </div>
+        
 
         <div className="login-features">
           <div className="feature">

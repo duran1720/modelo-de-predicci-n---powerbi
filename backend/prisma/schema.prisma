@@ -8,21 +8,34 @@ datasource db {
 }
 
 model users {
-  id              Int      @id @default(autoincrement())
-  nombre          String   @db.VarChar(100)
-  fecha_login     DateTime @default(now())
-  ultimo_login    DateTime?
-  activo          Boolean  @default(true)
+  id           Int       @id @default(autoincrement())
+  nombre       String    @unique(map: "nombre") @db.VarChar(100)
+  fecha_login  DateTime? @default(now()) @db.Timestamp(0)
+  ultimo_login DateTime? @db.Timestamp(0)
+  activo       Boolean?  @default(true)
 }
 
 model surveys {
-  id                Int      @id @default(autoincrement())
-  nombre            String?  @db.VarChar(100)
+  id                Int       @id @default(autoincrement())
+  nombre            String?   @db.VarChar(100)
   gusta_matematica  Int?
   gusta_quimica     Int?
   horas_estudio     Int?
   dificultad_logica Int?
   pierde_matematica Int?
   pierde_quimica    Int?
-  fecha_registro    DateTime @default(now())
+  fecha_registro    DateTime? @default(now()) @db.Timestamp(0)
+  gusta_artistica   Int?
+  gusta_sociales    Int?
+  pierde_artistica  Int?
+  pierde_sociales   Int?
+}
+
+model survey_materias {
+  id        Int     @id @default(autoincrement())
+  survey_id Int?
+  nombre    String? @db.VarChar(100)
+  materia   String? @db.VarChar(50)
+  gusto     Int?
+  pierde    Int?
 }

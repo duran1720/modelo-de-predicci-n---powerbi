@@ -132,6 +132,10 @@ def predict(data: EncuestaInput):
         dif_logica = round(valores[2] / 2.5)  # razonamiento_logico
         pierde_mat = 1 if valores[4] < 4 else 0  # concentracion_memoria
         pierde_quim = 1 if valores[5] < 4 else 0  # responsabilidad
+        gusto_artistica = round(valores[3] / 2)
+        gusto_sociales = round(valores[0] / 2)
+        pierde_artistica = 1 if valores[4] < 4 else 0
+        pierde_sociales = 1 if valores[5] < 4 else 0
 
         # Guardar en base de datos
         connection = mysql.connector.connect(
@@ -143,19 +147,47 @@ def predict(data: EncuestaInput):
 
         cursor = connection.cursor()
         insert_query = """
-        INSERT INTO surveys (nombre, gusta_matematica, gusta_quimica, horas_estudio, 
-                           dificultad_logica, pierde_matematica, pierde_quimica)
-        VALUES (%s, %s, %s, %s, %s, %s, %s)
-        """
-        
+        INSERT INTO surveys (
+            nombre, 
+            gusta_matematica, 
+            gusta_quimica,
+            gusta_artistica,
+            gusta_sociales,
+            horas_estudio, 
+            dificultad_logica, 
+            pierde_matematica, 
+            pierde_quimica,
+            pierde_artistica,
+            pierde_sociales
+        )
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                """
+        survey_id = cursor.lastrowid
+
+        materias_data = [
+            ("Matemática", gusto_mat, pierde_mat),
+            ("Química", gusto_quim, pierde_quim),
+            ("Artística", gusto_artistica, pierde_artistica),
+            ("Sociales", gusto_sociales, pierde_sociales)
+        ]
+
+        for materia, gusto, pierde in materias_data:
+            cursor.execute("""
+                INSERT INTO survey_materias (survey_id, nombre, materia, gusto, pierde)
+                VALUES (%s, %s, %s, %s, %s)
+            """, (survey_id, data.usuario_nombre, materia, gusto, pierde))
         cursor.execute(insert_query, (
             data.usuario_nombre,
             gusto_mat,
             gusto_quim,
+            gusto_artistica,
+            gusto_sociales,
             horas_est,
             dif_logica,
             pierde_mat,
-            pierde_quim
+            pierde_quim,
+            pierde_artistica,
+            pierde_sociales
         ))
         connection.commit()
         cursor.close()
@@ -199,6 +231,11 @@ def compare_students():
             dificultad = est.get("dificultad_logica", 0) or 0
             pierde_mat = est.get("pierde_matematica", 0) or 0
             pierde_quim = est.get("pierde_quimica", 0) or 0
+            gusta_artistica = est.get("gusta_artistica", 0) or 0
+            gusta_sociales = est.get("gusta_sociales", 0) or 0
+            pierde_artistica = est.get("pierde_artistica", 0) or 0
+            pierde_sociales = est.get("pierde_sociales", 0) or 0
+
 
             riesgo = (
                 (1 - gusta_mat/5) * 25 +
@@ -206,7 +243,9 @@ def compare_students():
                 (1 - horas/4) * 20 +
                 (1 - dificultad/4) * 20 +
                 (pierde_mat * 5) +
-                (pierde_quim * 5)
+                (pierde_quim * 5) +
+                (pierde_artistica * 5) +
+                (pierde_sociales * 5)
             )
 
             resultados.append({
